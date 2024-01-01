@@ -10,7 +10,7 @@ import java.util.List;
  * <p>Your parser class constructor should take a second parameter of this generic interface type.
  *
  * @author cs0320 staff
- * @version 1.0
+ * @version 2.0
  */
 public interface CreatorFromRow<T> {
   /**

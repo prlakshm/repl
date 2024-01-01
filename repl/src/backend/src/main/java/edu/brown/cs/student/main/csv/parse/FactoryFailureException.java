@@ -8,7 +8,7 @@ import java.util.List;
  * Feel free to expand or supplement or use it for other purposes.
  *
  * @author cs0320 staff
- * @version 1.0
+ * @version 2.0
  */
 public class FactoryFailureException extends Exception {
   final List<String> row;

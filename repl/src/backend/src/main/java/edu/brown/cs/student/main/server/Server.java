@@ -24,8 +24,8 @@ import spark.Spark;
  * CacheBuilder to the constructor, to specify how they want responses from the source to be cached,
  * or for responses not to be cached at all (the null case).
  *
- * @author sarahridley juliazdzilowska
- * @version 1.0
+ * @author sarahridley juliazdzilowska prlakshm
+ * @version 2.0
  */
 public class Server {
 
