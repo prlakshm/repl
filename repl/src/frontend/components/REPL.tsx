@@ -5,12 +5,20 @@ import { REPLInput } from "./REPLInput";
 import { HistoryItem } from "../types/HistoryItem";
 
 /**
+ * Props for the REPL component.
+ */
+interface REPLProps {
+  isPanelOpen: boolean;
+}
+
+/**
  * React component allowing users to input commands;
  * Displays corresponding command history, and shows the results of each command.
  * Depending on the mode selected, can display either just the output,
  * or both the user's command and the output.
+ * @param {REPLProps} props - The properties required for rendering the component.
  */
-export default function REPL() {
+export default function REPL(props: REPLProps) {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [mode, setMode] = useState<string>("brief");
   const [commandResultMap, setCommandResultMap] = useState(new Map());
@@ -35,6 +43,7 @@ export default function REPL() {
         commandHistory={history}
         mode={mode}
         commandResultMap={commandResultMap}
+        isPanelOpen={props.isPanelOpen}
         ariaLabel="History Log Display to show past commands inputted"
       />
       <hr></hr>

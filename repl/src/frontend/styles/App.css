@@ -14,3 +14,7 @@
   color: white;
 }
 
+.main-content {
+  flex: 1;
+
+}

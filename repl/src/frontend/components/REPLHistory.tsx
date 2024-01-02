@@ -8,6 +8,7 @@ interface REPLHistoryProps {
   commandHistory: HistoryItem[];
   mode: string;
   commandResultMap: Map<HistoryItem, [[]] | string>;
+  isPanelOpen: boolean;
   ariaLabel: string;
 }
 
@@ -16,8 +17,13 @@ interface REPLHistoryProps {
  * @param {REPLHistoryProps} props - The properties required for rendering the component.
  */
 export function REPLHistory(props: REPLHistoryProps) {
-  const { commandHistory, mode, commandResultMap, ariaLabel } = props;
+  const { commandHistory, mode, commandResultMap, isPanelOpen, ariaLabel } =
+    props;
 
+  // Adjust the height dynamically based on the panel state
+  const historyHeight = isPanelOpen ? "39.5vh" : "62vh";
+
+  
   /**
    * Function for rendering different types of data in the command history.
    * @param {[[]] | string} data - The data to be rendered.
@@ -49,7 +55,12 @@ export function REPLHistory(props: REPLHistoryProps) {
   };
 
   return (
-    <div className="repl-history" aria-live="polite" aria-label={ariaLabel}>
+    <div
+      className="repl-history"
+      style={{ height: historyHeight }}
+      aria-live="polite"
+      aria-label={ariaLabel}
+    >
       <h2 aria-live="polite">Command History</h2>
       <ul>
         {commandHistory.map((command, index) => (
