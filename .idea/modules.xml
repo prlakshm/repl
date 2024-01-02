@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/repl-first.iml" filepath="$PROJECT_DIR$/.idea/repl-first.iml" />
-      <module fileurl="file://$PROJECT_DIR$/repl/src/backend/s0.iml" filepath="$PROJECT_DIR$/repl/src/backend/s0.iml" />
     </modules>
   </component>
 </project>
