@@ -47,7 +47,7 @@ function App() {
             </div>
           </>
         )}
-        <button onClick={togglePanel} style={{marginBottom: "10px"}}>
+        <button onClick={togglePanel} style={{marginBottom: "10px", border: "1px solid white"}}>
           {isPanelOpen ? 'Close Instructions' : 'Open Instructions'}
         </button>
       </div>
