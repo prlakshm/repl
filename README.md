@@ -5,7 +5,7 @@ Link to Deployed Webpage: https://prlakshm.github.io/repl/
 In a nutshell: Web-based interactive command-line interface allowing for the
 loading, retrieval, and search of data through command input as well as fetching of broadband access percent via interaction with the simultaneously running backend (Server), by calls to its appropriate endpoints. Displays either that input's result, or both the result and the command itself.
 
-Team members: jzdzilow and prlakshm. We worked on the vast majority of the project asynchronously by implementing different functionalities on separate branches, as well as by pair programming, where we sat together and switched roles as the driver/navigator.
+Team members: Julia Zdzilowska and Pranavi Lakshminarayanan. We worked on the vast majority of the project asynchronously by implementing different functionalities on separate branches, as well as by pair programming, where we sat together and switched roles as the driver/navigator. Sarah Ridley assisted on previous versions of the backend code. 
 
 Total estimated time: ~30 hours
 
