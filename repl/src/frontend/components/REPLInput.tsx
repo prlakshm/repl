@@ -3,8 +3,12 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "./ControlledInput";
 import { HistoryItem } from "../types/HistoryItem";
 import { REPLFunction } from "../types/REPLFunction";
-import { handleMockLoad, handleMockView, handleMockSearch, handleMockBroadband} 
-from "./MockedREPLFunctions"
+import {
+  handleMockLoad,
+  handleMockView,
+  handleMockSearch,
+  handleMockBroadband,
+} from "./MockedREPLFunctions";
 import { useEffect } from "react";
 /**
  * Map storing registered commands
@@ -85,6 +89,19 @@ export function REPLInput(props: REPLInputProps) {
       return "Mode changed to " + args[0];
     } else {
       return "Invalid mode: " + args[0] + ". Use brief or verbose";
+    }
+  };
+
+  /**
+   * Function handling clearing history changes of the REPL interface
+   * @param {string[]} args - none when using this command
+   */
+  const handleClear: REPLFunction = async (args: string[]): Promise<string> => {
+    if (args.length !== 0) {
+      return "Invalid usage of 'clear' command. Usage: clear";
+    } else {
+      setHistory([]);
+      return "History cleared";
     }
   };
 
@@ -204,6 +221,7 @@ export function REPLInput(props: REPLInputProps) {
   useEffect(() => {
     registerCommand("register", handleRegister);
     registerCommand("mode", handleMode);
+    registerCommand("clear", handleClear);
     registerCommand("load", handleLoad);
     registerCommand("view", handleView);
     registerCommand("search", handleSearch);
