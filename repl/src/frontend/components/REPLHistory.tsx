@@ -21,7 +21,7 @@ export function REPLHistory(props: REPLHistoryProps) {
     props;
 
   // Adjust the height dynamically based on the panel state
-  const historyHeight = isPanelOpen ? "39.5vh" : "62vh";
+  const historyHeight = isPanelOpen ? "36.25vh" : "62vh";
 
   
   /**
