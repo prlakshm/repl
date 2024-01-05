@@ -60,6 +60,12 @@ function App() {
               </span>{" "}
               to register a new command
             </div>
+            <div>
+              <span style={{ color: "lightblue" }}>
+                "clear"
+              </span>{" "}
+              to clear command history
+            </div>
           </>
         )}
         <button
