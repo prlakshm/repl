@@ -7,11 +7,8 @@ import edu.brown.cs.student.main.sources.AcsCensusSource;
 import edu.brown.cs.student.main.sources.CensusSource;
 import edu.brown.cs.student.main.sources.mocks.StaleMockCensusSource;
 
-<<<<<<< Updated upstream
-=======
 import java.net.InetAddress;
 import java.net.UnknownHostException;
->>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import spark.Spark;
