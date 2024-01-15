@@ -32,7 +32,7 @@ import spark.Spark;
 public class Server {
 
   static final int port = 3232;
-  static final String externalIpAddress = "https://23.22.28.100";
+  static final String externalIpAddress = "23.22.28.100";
 
   /**
    * The constructor for the Server class.
@@ -67,13 +67,6 @@ public class Server {
     Spark.init();
     Spark.awaitInitialization();
 
-    // Print the IP address and port after initialization
-    try {
-      InetAddress ipAddress = InetAddress.getLocalHost();
-      System.out.println("Server started at http://" + ipAddress.getHostAddress() + ":" + Spark.port());
-    } catch (UnknownHostException e) {
-      e.printStackTrace();
-    }
   }
 
   /**
@@ -83,5 +76,7 @@ public class Server {
    */
   public static void main(String[] args) {
     new Server();
+    // Print the IP address and port after initialization
+    System.out.println("Server started at http://" + externalIpAddress + ":" + Spark.port());
   }
 }
