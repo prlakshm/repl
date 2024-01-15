@@ -7,6 +7,11 @@ import edu.brown.cs.student.main.sources.AcsCensusSource;
 import edu.brown.cs.student.main.sources.CensusSource;
 import edu.brown.cs.student.main.sources.mocks.StaleMockCensusSource;
 
+<<<<<<< Updated upstream
+=======
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import spark.Spark;
@@ -30,6 +35,7 @@ import spark.Spark;
 public class Server {
 
   static final int port = 3232;
+  static final String externalIpAddress = "https://23.22.28.100";
 
   /**
    * The constructor for the Server class.
@@ -43,6 +49,9 @@ public class Server {
     // CacheBuilder cacheBuilder = new CacheBuilder(); 
     // newBuilder().maximumSize(1000).expireAfterWrite(10, TimeUnit.MINUTES); 
     CsvDataWrapper csvData = new CsvDataWrapper(new ArrayList<>(), false);
+
+    // Bind Spark to the external IP and port
+    Spark.ipAddress("0.0.0.0");
     Spark.port(port);
     after(
         (request, response) -> {
@@ -60,6 +69,14 @@ public class Server {
     CacheBuilder.newBuilder().maximumSize(1000).expireAfterWrite(10, TimeUnit.MINUTES)));
     Spark.init();
     Spark.awaitInitialization();
+
+    // Print the IP address and port after initialization
+    try {
+      InetAddress ipAddress = InetAddress.getLocalHost();
+      System.out.println("Server started at http://" + ipAddress.getHostAddress() + ":" + Spark.port());
+    } catch (UnknownHostException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -69,6 +86,5 @@ public class Server {
    */
   public static void main(String[] args) {
     new Server();
-    System.out.println("Server started at http://localhost:" + port);
   }
 }
