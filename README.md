@@ -1,4 +1,4 @@
-## Sprint 4: Repl ReadMe
+## Sprint 4: Read-Eval-Print-Loop (REPL) ReadMe
 
 Link to Deployed Webpage: https://prlakshm.github.io/repl/
  

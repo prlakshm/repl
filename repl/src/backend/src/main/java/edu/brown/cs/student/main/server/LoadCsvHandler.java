@@ -3,9 +3,8 @@ package edu.brown.cs.student.main.server;
 import com.squareup.moshi.Moshi;
 import edu.brown.cs.student.main.creator.ListStringFromRow;
 import edu.brown.cs.student.main.csv.parse.CsvParser;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
+import java.io.*;
 import java.util.List;
 import spark.Request;
 import spark.Response;
@@ -58,8 +57,18 @@ public class LoadCsvHandler implements Route {
       //           "error_datasource", "Filepath located in an inaccessible directory", csvFilePath)
       //       .serialize();
       // }
-      File csvFile = new File(csvFilePath);
-      FileReader reader = new FileReader(csvFile);
+      // The class loader that loaded the class
+      ClassLoader classLoader = getClass().getClassLoader();
+      InputStream inputStream = classLoader.getResourceAsStream(csvFilePath);
+
+      //Check file in resource folder
+      if (inputStream == null) {
+        return new LoadFailureResponse(
+                "error_datasource", "File not found in resources: " + csvFilePath, csvFilePath)
+                .serialize();
+      }
+
+      InputStreamReader reader = new InputStreamReader(inputStream);
       CsvParser<List<String>> parser = new CsvParser<>(reader, new ListStringFromRow());
       parser.parseCsv();
       List<List<String>> rows = parser.getStoreRows();
@@ -72,6 +81,7 @@ public class LoadCsvHandler implements Route {
       return new LoadFailureResponse("error_bad_request", e.getMessage(), csvFilePath).serialize();
     }
   }
+
 
   /**
    * A record representing a failed call to the /loadcsv handler, containing a result with an error
