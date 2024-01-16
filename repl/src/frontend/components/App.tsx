@@ -19,7 +19,7 @@ function App() {
           <>
             <div>
               <span style={{ color: "lightblue" }}>"load [file_path]"</span> to
-              load a csv file
+              load csv in data folder (ex. <span style={{ color: "lightblue" }}>"load data/custom/zillow.csv"</span>)
             </div>
             <div>
               <span style={{ color: "lightblue" }}>"view"</span> to view csv
