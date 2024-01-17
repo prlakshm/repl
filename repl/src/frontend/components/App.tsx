@@ -19,7 +19,11 @@ function App() {
           <>
             <div>
               <span style={{ color: "lightblue" }}>"load [file_path]"</span> to
-              load csv in data folder (ex. <span style={{ color: "lightblue" }}>"load data/custom/zillow.csv"</span>)
+              load csv in data folder (ex.{" "}
+              <span style={{ color: "lightblue" }}>
+                "load data/custom/zillow.csv"
+              </span>
+              )
             </div>
             <div>
               <span style={{ color: "lightblue" }}>"view"</span> to view csv
@@ -46,7 +50,15 @@ function App() {
               <span style={{ color: "lightblue" }}>
                 "broadband [state] [county]"
               </span>{" "}
-              to get cached broadband access percent of county in state
+              to get cached broadband access percent (ex.{" "}
+              <span style={{ color: "lightblue" }}>
+                "broadband North_Carolina Durham"
+              </span>
+              ,{" "}
+              <span style={{ color: "lightblue" }}>
+                "broadband California Orange"
+              </span>
+              )
             </div>
             <div>
               <span style={{ color: "lightblue" }}>"mode brief"</span> to
@@ -61,10 +73,8 @@ function App() {
               to register a new command
             </div>
             <div>
-              <span style={{ color: "lightblue" }}>
-                "clear"
-              </span>{" "}
-              to clear command history
+              <span style={{ color: "lightblue" }}>"clear"</span> to clear
+              command history
             </div>
           </>
         )}

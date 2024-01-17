@@ -64,7 +64,7 @@ public class LoadCsvHandler implements Route {
       //Check file in resource folder
       if (inputStream == null) {
         return new LoadFailureResponse(
-                "error_datasource", "File not found in resources: " + csvFilePath, csvFilePath)
+                "error_datasource", "File not found \"" + csvFilePath + "\"", csvFilePath)
                 .serialize();
       }
 
