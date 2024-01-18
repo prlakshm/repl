@@ -23,7 +23,6 @@ export function REPLHistory(props: REPLHistoryProps) {
   // Adjust the height dynamically based on the panel state
   const historyHeight = isPanelOpen ? "36.25vh" : "62vh";
 
-  
   /**
    * Function for rendering different types of data in the command history.
    * @param {[[]] | string} data - The data to be rendered.
@@ -68,18 +67,16 @@ export function REPLHistory(props: REPLHistoryProps) {
             <li>
               {mode === "brief" ? (
                 <div className="text-box" aria-live="polite">
-                  <p>
-                    Output:{" "}
-                    {renderData(commandResultMap.get(command) ?? "No data")}
-                  </p>
+                  Output:{" "}
+                  {renderData(commandResultMap.get(command) ?? "No data")}
                 </div>
               ) : (
                 <div className="text-box" aria-live="polite">
                   <p>Command: {command.command}</p>
-                  <p>
+                  <div>
                     Output:{" "}
                     {renderData(commandResultMap.get(command) ?? "No data")}
-                  </p>
+                  </div>
                 </div>
               )}
             </li>

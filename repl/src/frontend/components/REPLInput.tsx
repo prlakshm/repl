@@ -116,7 +116,7 @@ export function REPLInput(props: REPLInputProps) {
     const filepath = args[0].trim();
     try {
       const response = await fetch(
-        `http://23.22.28.100:3232/loadcsv?filepath=${filepath}`
+        `https://cs32customserver.com/repl/loadcsv?filepath=${filepath}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -142,7 +142,7 @@ export function REPLInput(props: REPLInputProps) {
       return "Invalid usage of 'view' command. Usage: view";
     }
     try {
-      const response = await fetch("http://23.22.28.100:3232/viewcsv");
+      const response = await fetch("https://cs32customserver.com/repl/viewcsv");
       if (response.ok) {
         const data = await response.json();
         const resultMessage =
@@ -172,7 +172,7 @@ export function REPLInput(props: REPLInputProps) {
 
     try {
       const response = await fetch(
-        `http://23.22.28.100:3232/searchcsv?headers=${hasHeaders}&value=${value}&colid=${columnId}`
+        `https://cs32customserver.com/repl/searchcsv?headers=${hasHeaders}&value=${value}&colid=${columnId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -200,7 +200,7 @@ export function REPLInput(props: REPLInputProps) {
 
     try {
       const response = await fetch(
-        `http://23.22.28.100:3232/broadband?state=${state}&county=${county}`
+        `https://cs32customserver.com/repl/broadband?state=${state}&county=${county}`
       );
       if (response.ok) {
         const data = await response.json();

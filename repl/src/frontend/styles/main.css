@@ -46,6 +46,10 @@ body {
   background-color: white; /* Light gray background */
 }
 
+.repl-history p {
+  margin-top: 0px
+}
+
 .repl-input {
   box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
   margin: auto;
