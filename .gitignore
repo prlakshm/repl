@@ -2,6 +2,8 @@
 
 # dependencies
 repl/node_modules
+repl/.idea
+repl/.vite
 /.pnp
 .pnp.js
 
@@ -10,7 +12,7 @@ repl/node_modules
 
 
 # production
-/build
+repl/build
 
 # misc
 .DS_Store

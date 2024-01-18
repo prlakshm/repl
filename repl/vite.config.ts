@@ -3,12 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => {
   return {
+    plugins: [react()],
+    base: '/repl/',
     build: {
       outDir: 'build',
-    },
-    plugins: [react()],
-    server: {
-      port: 8000,
-    },
+    }
   };
 });
