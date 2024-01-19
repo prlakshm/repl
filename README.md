@@ -12,22 +12,21 @@ Total estimated time: ~40 hours
 ### Running the program:
 
 0. To access the server directly, navigate to https://cs32customserver.com/repl/. This server was created using and AWS ec2 ubuntu instance and nginx. This url connects to the backend application. The application is run as a jar file on the ec2 instance using a service. This process uses a public ip address.
-<br>
-   To run the application on localhost:
+   <br><br>To run the application on localhost:
    Upon building the project, run Server.java located in the server directory, and cd into repl via
-   the command line interface. Install the node package menager (via npm install or sudo npm install in case of restriction issues). Open a new terminal and cd into repl. Install express and cors through npm install. Then, run the local server that houses the mocked json data inputting into the command line node server.js. In a new terminal, run the frontend via npm start within repl; redirect to the newly opened local host. Results of the inputted commands (in case of a non-mocked "mode") will be fetched from the backend server. Inaccurate number of arguments for all commands below will result in an error response (additional arguements aren't ignored - see design choices). This will run the server on localhost.
+   the command line interface. Install the node package menager (via npm install or sudo npm install in case of restriction issues). Open a new terminal and cd into repl. Install express and cors through npm     install. Then, run the local server that houses the mocked json data inputting into the command line node server.js. In a new terminal, run the frontend via npm start within repl; redirect to the newly opened    local host. Results of the inputted commands (in case of a non-mocked "mode") will be fetched from the backend server. Inaccurate number of arguments for all commands below will result in an error response    (additional arguements aren't ignored - see design choices). This will run the server on localhost.
 
-1. Command Instructions:
+3. Command Instructions:
    <br>Upon loading the brower, the instructions panel will all possible commands will be open. This panel shows how to use each command and what each command does. To close the panel, click the "Close Instructions" button to open up space in the command history viewport. You can open the panel again by clicking the "Open Instructions" button. This allows you to easily know how to use the commands from the webpage, without refering to the README every time.
 
-2. Loading data:  
+4. Loading data:  
    On the web app, input "load your_filepath", with the your_filepath
    representing the location containing the to-be-loaded CSV data.
    Upon successful load, the Command History should contain the result of the performed actions and the filepath of loaded data. Filepath cannot be empty, and must be located in the 'data' directory. If no filepath is passed in, or the filepath either can't be found or is located in an inaccessible directory, the server will return an informative response outlining the issue. Only one file is stored at the time - running command repeatedly overrides the previously fetched content.
 
    > example: "load data/custom/zillow.csv"
 
-3. Viewing data:  
+5. Viewing data:  
    Input "view" to display the contents of a most recently loaded dataset.
    Possible only with data previously loaded, and can be only performed on
    the most recently inputted filepath (only one dataset stored at the time). If successful, Command History should, in addition to previous commands, display a table with the entirety of CSV file's contents as a table; otherwise will return an informative response (either CSV file not loaded, or
@@ -35,7 +34,7 @@ Total estimated time: ~40 hours
 
    > example: "view"
 
-4. Searching through data:  
+6. Searching through data:  
    Input "search has_headers your_value your_column_identifier".
    Has_headers corresponds to whether the loaded csv has headers or not, and although they're parsed (and thus displayed) the same way as rows, different input for has_headers influences results of the search (can't search for a value within a row, if it's considered a header). Any input other than true or false implies that the headers aren't present.
    Column identifier corresponds to either the index (starting with 0) or header name to look for if the loaded csv has non-numeric headers as specified by the user via the command. Allows for searching through all columns with the "\*" input.
@@ -45,7 +44,7 @@ Total estimated time: ~40 hours
 
    > example: "search true Alice 0"
 
-5. Fetching broadband data:  
+7. Fetching broadband data:  
    Input "broadband your_state your_county".
    By default, all commands are using real data by connecting to the API; broadband percent is accessed by passing the request via the Repl backend server to the ACS API.
 
@@ -55,7 +54,7 @@ Total estimated time: ~40 hours
 
    > example: "broadband North_Carolina Durham"
 
-6. Changing the mode:  
+8. Changing the mode:  
    Input "mode your-mode". Mode can be either brief or verbose, with the former
    being the default. Upon changing the mode, all elements of the history are rerendered to contain relevant elements of the output. In brief mode, it's exclusively the command's result; in verbose mode, it's both the command, and the result. If mode entered is not valid, or not provided, the Command History will display an informative message. Mode changes are displayed in the Command History as any other command input.
 
@@ -180,4 +179,4 @@ Back-end tests checking the appropriateness of load/view/search/broadband functi
 
 ### Errors/Bugs
 
-None that we know of!
+If you run any of the mock commands without running server.js, an error will show up as "Failed to Fetch." Also please know broadband time is in UTC, not the local timezone. Other than that, none that we know of!
