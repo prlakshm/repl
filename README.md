@@ -1,21 +1,24 @@
 ## Sprint 4: Read-Eval-Print-Loop (REPL) ReadMe
 
 Link to Deployed Webpage: https://prlakshm.github.io/repl/
- 
+
 In a nutshell: Web-based interactive command-line interface allowing for the
 loading, retrieval, and search of data through command input as well as fetching of broadband access percent via interaction with the simultaneously running backend (Server), by calls to its appropriate endpoints. Displays either that input's result, or both the result and the command itself.
 
-Team members: Julia Zdzilowska and Pranavi Lakshminarayanan. We worked on the vast majority of the project asynchronously by implementing different functionalities on separate branches, as well as by pair programming, where we sat together and switched roles as the driver/navigator. Sarah Ridley assisted on previous versions of the backend code. 
+Team members: Julia Zdzilowska and Pranavi Lakshminarayanan. We worked on the vast majority of the project asynchronously by implementing different functionalities on separate branches, as well as by pair programming, where we sat together and switched roles as the driver/navigator. Pranavi carried out the deployment process after the duration of the class project. Additionally, Sarah Ridley assisted on previous versions of the backend code.  
 
-Total estimated time: ~30 hours
+Total estimated time: ~40 hours
 
 ### Running the program:
 
-0. Upon building the project, run Server.java located in the server directory, and cd into repl via
-   the command line interface. Install the node package menager (via npm install or sudo npm install in case of restriction issues). Open a new terminal and cd into repl. Install express and cors through npm install. Then, run the local server that houses the mocked json data inputting into the command line node server.js. In a new terminal, run the frontend via npm start within repl; redirect to the newly opened local host. Results of the inputted commands (in case of a non-mocked "mode") will be fetched from the backend server. Inaccurate number of arguments for all commands below will result in an error response (additional arguements aren't ignored - see design choices).
+0. To access the server directly, navigate to https://cs32customserver.com/repl/. This server was created using and AWS ec2 ubuntu instance and nginx. This url connects to the backend application. The application is run as a jar file on the ec2 instance using a service. This process uses a public ip address.
+<br>
+   To run the application on localhost:
+   Upon building the project, run Server.java located in the server directory, and cd into repl via
+   the command line interface. Install the node package menager (via npm install or sudo npm install in case of restriction issues). Open a new terminal and cd into repl. Install express and cors through npm install. Then, run the local server that houses the mocked json data inputting into the command line node server.js. In a new terminal, run the frontend via npm start within repl; redirect to the newly opened local host. Results of the inputted commands (in case of a non-mocked "mode") will be fetched from the backend server. Inaccurate number of arguments for all commands below will result in an error response (additional arguements aren't ignored - see design choices). This will run the server on localhost.
 
-1. Command Instructions: 
-   <br>Upon loading the brower, the instructions panel will all possible commands will be open. This panel shows how to use each command and what each command does. To close the panel, click the "Close Instructions" button to open us space in the command history viewport. You can open the panel again by clicking the "Open Instructions" button. This allows you to easily know how to use the commands from the webpage, without refering to the README every time. 
+1. Command Instructions:
+   <br>Upon loading the brower, the instructions panel will all possible commands will be open. This panel shows how to use each command and what each command does. To close the panel, click the "Close Instructions" button to open up space in the command history viewport. You can open the panel again by clicking the "Open Instructions" button. This allows you to easily know how to use the commands from the webpage, without refering to the README every time.
 
 2. Loading data:  
    On the web app, input "load your_filepath", with the your_filepath
@@ -48,7 +51,7 @@ Total estimated time: ~30 hours
 
    County must be within the provided state to return an appropriate broadband access percent. Server utilizes caching - if the data for a particular state/county pair had been retrieved previously, the susbequent request won't trigger a call to the ACS API.
 
-   If successful, Command History will display the the broadband access percent as well as time of retrieval (remains the same upon the second request due to caching - displays the time of the initial data fetch); otherwise (if any of the parameters are missing or are invalid) will return an informative message outlining the issue.
+   If successful, Command History will display the the broadband access percent as well as time of retrieval (remains the same upon the second request due to caching - displays the time of the initial data fetch); otherwise (if any of the parameters are missing or are invalid) will return an informative message outlining the issue. The time is displayed in UTC time (universal time).
 
    > example: "broadband North_Carolina Durham"
 
@@ -59,8 +62,8 @@ Total estimated time: ~30 hours
 > example: "mode verbose"
 
 7. Clearing history:
-   <br>Input "clear". 
-   If successful, the command history will be cleared. Use this command to avoid unnecessary scrolling. If an invalid amount of      arguments are entered, an informative message appears.
+   <br>Input "clear".
+   If successful, the command history will be cleared. Use this command to avoid unnecessary scrolling. If an invalid amount of arguments are entered, an informative message appears.
 
    > example: "clear"
 
@@ -76,6 +79,7 @@ Total estimated time: ~30 hours
 > example: "register load2 handleLoad"
 
 9. Mocking:
+   Run the "repl\server.js" file. This runs the localhost server hosting the mocked respones. The server was created using Express. 
    Input "mockload any_filepath" to display a mocked json of a successfully loaded csv message.
    No matter, what filepath is inputed, the same response will always generate, because the
    json is mocked in public/load.json.
@@ -95,12 +99,12 @@ Total estimated time: ~30 hours
    json in public/broadband.json.
 
 10. Accessibility:
-   All components and their contents can be vocalized via a ScreenReader, with descriptive aria labels accessed by the program outlining the REPL's elements' functionalities or ways of use. The interface is also fully usable on any Zoom level, due to the utilization of flex boxes and relative (dynamic) sizing using viewport units rather than predefined values.
+    All components and their contents can be vocalized via a ScreenReader, with descriptive aria labels accessed by the program outlining the REPL's elements' functionalities or ways of use. The interface is also fully usable on any Zoom level, due to the utilization of flex boxes and relative (dynamic) sizing using viewport units rather than predefined values.
 
-   Keyboard shortcuts provided for simplified, and user-friendly interactions with the REPL interface:
+Keyboard shortcuts provided for simplified, and user-friendly interactions with the REPL interface:
 
-   - Ctrl+b; navigates cursor to command box
-   - Enter; submits the command without requiring the user to click the button
+- Ctrl+b; navigates cursor to command box
+- Enter; submits the command without requiring the user to click the button
 
 ### Design Choices
 
@@ -138,6 +142,7 @@ of the real server. fetch statements only take in urls, so creating a local serv
 - `HistoryItem` interface representing a single command input into the history. See "Design Choices" for further explanation.
 
 ### Running tests
+
 **Important preface**: we've decided to not utilize Jest testing, as all of our frontend tests interact with the real backend data - thus, we're checking the actual outputs of the server rather than simply ensuring the proper rendering of frontend components. This way, we're also testing the functionality of the register command, as it's one accessible via REPL and interacts with the values returned in the frontend.
 
 To run the front-end centered tests for this project, run the java Server.js, install Playwright (cd into repl; input npx playwright install), and run its tests (npx playwright test). For a user-friendly display, input npx playwright test --ui. Testing suite will ensure the reliability of the REPL, checking the state of its rendered components. There are separate test files for the load, view, search, broadband, and mode commands; register is included in the main App.spec testing suite. There is also a test file to check that the page loads correctly (App.spec.ts). You can run these files individually using (npx playwright test <filename>).
